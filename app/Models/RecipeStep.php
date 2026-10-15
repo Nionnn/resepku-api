@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class RecipeStep extends Model
+{
+    protected $fillable = [
+        'recipe_id',
+        'step_number',
+        'description',
+    ];
+
+    protected $casts = [
+        'recipe_id' => 'integer',
+        'step_number' => 'integer',
+    ];
+
+    public function recipe(): BelongsTo
+    {
+        return $this->belongsTo(Recipe::class);
+    }
+}
